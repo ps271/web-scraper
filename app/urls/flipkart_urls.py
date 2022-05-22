@@ -1,0 +1,4 @@
+urls = {
+    'mobiles': 'https://www.flipkart.com/search?q=mobiles&as=on&as-show=on&otracker=AS_Query_TrendingAutoSuggest_1_0_na_na_na&otracker1=AS_Query_TrendingAutoSuggest_1_0_na_na_na&as-pos=1&as-type=TRENDING&suggestionId=mobiles&requestId=e66c9c03-ce4f-411e-9e6f-b99deee55f00',
+    'laptops': 'https://www.flipkart.com/search?q=laptop&sid=6bo%2Cb5g&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_1_2_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_1_2_na_na_na&as-pos=1&as-type=RECENT&suggestionId=laptop%7CLaptops&requestId=5b32ea61-84c6-4bc7-b1be-6157a48f2b80&as-searchtext=la'
+}
