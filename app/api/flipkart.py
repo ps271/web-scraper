@@ -15,3 +15,4 @@ def laptops():
 @flipkart_bp.route('/mobiles', methods=['GET'])
 def mobiles():
     json_response = flipkart_c.mobile_search()
+    return json_response, 200
