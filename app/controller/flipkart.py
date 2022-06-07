@@ -74,7 +74,7 @@ class FlipkartController:
         return {'success': 'OK'}
 
     def mobile_search(self):
-        # self.model_mobile.delete_all()
+        self.model_mobile.delete_all()
         search_url = urls['mobiles']
         response = self.get_search_result(search_url=search_url)
         soup = BS(response.content, 'html5lib')
@@ -92,14 +92,18 @@ class FlipkartController:
             for image in images:
                 img_link = image['src']
                 image_links.append(img_link)
-            amount = soup.find("div", attrs={"class": "_3I9_wc"}).text
             price = soup.find("div", attrs={"class": "_30jeq3"}).text
-            am = amount[1:]
-            am = am.split(',')
-            am = ''.join(am)
             pr = price[1:]
             pr = pr.split(',')
             pr = ''.join(pr)
+            amount = soup.find("div", attrs={"class": "_3I9_wc"})
+            if amount:
+                amount = amount.text
+                am = amount[1:]
+                am = am.split(',')
+                am = ''.join(am)
+            else:
+                amount = price
             discount = str(((int(am) - int(pr)) * 100 // int(am))) + '%'
             rating = soup.find("div", attrs={"class": "_3LWZlK"}).text
             specifications = soup.find_all("div", attrs={"class": "_3k-BhJ"})
@@ -110,10 +114,12 @@ class FlipkartController:
                 table = list(table)
                 k_v = {}
                 for row in table:
-                    key = row.select_one('._1hKmbr').text
-                    value = row.select_one('._21lJbe').text
-                    k_v[key] = value
-                specs[table_name] = k_v
+                    key = row.select_one('._1hKmbr')
+                    value = row.select_one('._21lJbe')
+                    if key and value:
+                        k_v[key.text] = value.text
+                if len(k_v) > 0:
+                    specs[table_name] = k_v
             post_data = {}
             post_data['title'] = title
             post_data['images'] = image_links
