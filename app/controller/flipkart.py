@@ -26,7 +26,7 @@ class FlipkartController:
         soup = BS(response.content, 'html5lib')
         laptops = soup.find_all("div", attrs={"class": "_1AtVbE"})
         laptops = list(laptops)
-        laptops = laptops[3:]
+        laptops = laptops[3:27]
         for laptop in laptops:
             laptop_page_link = laptop.select_one('._1fQZEK')['href']
             laptop_page_link = f'{self.base_url}{laptop_page_link}'
@@ -80,7 +80,7 @@ class FlipkartController:
         soup = BS(response.content, 'html5lib')
         mobiles = soup.find_all("div", attrs={"class": "_1AtVbE"})
         mobiles = list(mobiles)
-        mobiles = mobiles[3:]
+        mobiles = mobiles[3:27]
         for mobile in mobiles:
             mobile_page_link = mobile.select_one('._1fQZEK')['href']
             mobile_page_link = f'{self.base_url}{mobile_page_link}'
