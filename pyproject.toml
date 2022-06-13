@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "webscraper"
+version = "0.1.0"
+description = ""
+authors = ["Prateek Singh <ps769140@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.27.1"
+bs4 = "^0.0.1"
+html5lib = "^1.1"
+pymongo = "^4.1.1"
+python-dotenv = "^0.20.0"
+Flask = "^2.1.2"
+selenium = "^4.2.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
